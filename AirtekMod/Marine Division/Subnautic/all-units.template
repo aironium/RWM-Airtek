@@ -1,0 +1,14 @@
+[core]
+
+availableInDemo: false
+showOnMinimapToEnemies: false
+
+
+[action_note]
+isLocked: true
+isActive: false
+text: [ Subnautic ]
+description: -Enemies can't see units in this subcategory on their minimap
+displayType: infoOnlyNoBox
+price: 0
+isVisible: true

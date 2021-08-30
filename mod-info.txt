@@ -1,0 +1,11 @@
+[mod]
+title: Airtek Mod 1.6.5: Purity
+description: Introduces new systems to pump up your normal Rusted Warfare gameplay! [ Version 1.6.5.2 ] | Created By the Airtek Industries International, 2021. | Report bugs and join our Discord server!  [https://discord.gg/RqkMJXt ]
+
+
+tags: starting-units, units, experimentals
+
+thumbnail: thumb.png
+
+[music]
+sourceFolder: AirtekMod/Acoustics

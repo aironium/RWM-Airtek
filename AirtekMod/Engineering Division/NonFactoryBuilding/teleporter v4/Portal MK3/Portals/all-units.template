@@ -1,0 +1,247 @@
+[core]
+class: CustomUnitMetadata
+price: 100
+maxHp: 1000
+mass: 9000
+tags: gates
+techLevel: 1
+buildSpeed: 5s
+radius: 100
+isBio: true
+isBuilding: false
+constructionFootprint: -1, -1, 1, 1
+footprint: -3, -3, 3, 3
+softCollisionOnAll: 5
+explodeOnDeath: false
+hideScorchMark: true
+disableAllUnitCollisions: true
+maxTransportingUnits: 999
+transportUnitsBlockAirAndWaterUnits: false
+transportUnitsBlockOtherTransports: false
+effectOnDeath: CUSTOM:woosh3, CUSTOM:woosh*15
+experimental: true
+energyMax: 300
+energyRegen: -0.025
+dieOnZeroEnergy: true
+canOnlyBeAttackedByUnitsWithTags: antiPortal
+#showInEditor: false
+autoTriggerCooldownTime:0.2s
+autoTriggerCheckRate: every8Frames
+
+[action_parent]
+isLocked: true
+text: parent
+description: %{customTarget1}
+addResources: ammo=1, ammo=-1
+
+[action_testFire]
+text: fireup
+isVisible: if self.tags(includes="portal_blue")
+fireTurretXAtGround: 1
+fireTurretXAtGround_withTarget: unitref customTarget1.readUnitMemory("portal2", type="unit")
+buildSpeed: 0.5s
+price: 0
+autoTrigger: if not self.transportingCount(lessThan=1) and self.tags(includes="portal_blue")
+
+[action_testFire2]
+text: fireup
+isVisible: if self.tags(includes="portal_red")
+fireTurretXAtGround: 1
+fireTurretXAtGround_withTarget: unitref customTarget1.readUnitMemory("portal1", type="unit")
+buildSpeed: 0.5s
+price: 0
+autoTrigger: if not self.transportingCount(lessThan=1) and self.tags(includes="portal_red")
+
+
+[hiddenAction_warnPortal]
+autoTrigger: if numberOfUnitsInTeam(withTag='portal_perishable', lessThan=1) and not self.hasFlag(id=5)
+autoTriggerOnEvent: created
+showMessageToAllPlayers: Timespace Tunneling Activity Detected!
+addResources: setFlag=5
+
+
+[hiddenAction_portalLock]
+autoTrigger: if (numberOfUnitsInTeam(withTag='portalGate', greaterThan=1) and numberOfUnitsInTeam(withTag='portal_perishable', lessThan=1)) or numberOfUnitsInTeam(withTag='portal_perishable', lessThan=2, greaterThan=0)
+debugMessage: oi lmao
+temporarilyAddTags: portal_perishable
+
+
+[hiddenAction_portalPerish]
+autoTrigger: if (numberOfUnitsInTeam(withTag='portalGate', lessThan=2) and self.tags(includes='portal_perishable')) or numberOfUnitsInTeam(withTag="tp", lessThan=1)
+addResources: hp=-1000
+
+[effect_spark]
+attachedToUnit: false
+life: 100
+physics: true
+atmospheric: true
+xSpeedRelativeRandom: 3
+ySpeedRelativeRandom: 3
+hSpeed: 2
+image: spark.png
+priority: verylow
+dirOffsetRandom: 10
+hSpeedRandom: 20
+
+[effect_wishwush]
+attachedToUnit: false
+life: 100
+scaleFrom: 1
+scaleTo: 0
+image: spark.png
+priority: verylow
+
+
+[graphics]
+total_frames: 1
+image: ../null.png
+image_wreak: NONE
+showEnergyBar: false
+showHealthBar: false
+
+[attack]
+canAttack: true
+canAttackFlyingUnits: true
+canAttackLandUnits:   true
+canAttackUnderwaterUnits: true
+turretSize: 0
+aimOffsetSpread: 0
+turretTurnSpeed: 100
+maxAttackRange: 3500
+shootDelay: 1
+showRangeUIGuide: true
+
+[effect_woosh]
+life: 10
+priority: low
+fadeOut: true
+alpha:1
+scaleFrom: 0
+scaleTo: 5
+attachedToUnit: true
+
+
+[effect_woosh2]
+life: 75
+priority: low
+fadeOut: true
+alpha:0.75
+scaleFrom: 2.75
+scaleTo: 0
+attachedToUnit: true
+
+
+[effect_woosh3]
+life: 75
+priority: low
+fadeOut: true
+alpha:1.5
+scaleFrom: 1
+scaleTo: 5
+attachedToUnit: true
+
+[hiddenAction_implode]
+autoTrigger: true
+spawnEffects: CUSTOM:woosh2
+
+[action_transfer]
+addResources: setFlag=1
+price: 0
+text: Transfer
+description: -Transfer units to another portal with same color
+isVisible: false
+autoTrigger: if self.transportingCount(greaterThan=0)
+pos: 1
+
+[action_readCus1]
+text: Linked to %{customTarget1.readUnitMemory("portal2", type="unit")}
+description: Distance to %{customTarget1.readUnitMemory("portal2", type="unit")}:%{distanceBetween(self, customTarget1.readUnitMemory("portal2", type="unit"))} [distanceBetween(i, j)]
+price: 0
+addResources: setFlag=6
+buildSpeed: 0
+isLocked: true
+displayType: infoOnly
+isVisible: if self.tags(includes="portal_blue")
+
+[action_readCus2]
+text: Linked to %{customTarget1.readUnitMemory("portal1", type="unit")}
+description: Distance to %{customTarget1.readUnitMemory("portal1", type="unit")}:%{distanceBetween(self, customTarget1.readUnitMemory("portal1", type="unit"))} [distanceBetween(i, j)]
+price: 0
+addResources: setFlag=6
+buildSpeed: 0
+isLocked: true
+displayType: infoOnly
+isVisible: if self.tags(includes="portal_red")
+
+
+[hiddenAction_chkFlag]
+debugMessage: Transfering units
+autoTrigger: if self.hasFlag(id=1)
+
+[hiddenAction_transferEnd]
+addResources: unsetFlag=1 
+autoTrigger: if self.transportingCount(lessThan=1)
+
+[comment_fish]
+hiddenAction_bornAtch]
+#autoTriggerOnEvent: created
+autoTrigger: if self.numberOfAttachedUnits(withTag="targ", lessThan=1)
+attachments_onlyOnSlots: target
+attachment_target]
+setDrawLayerOnTop: true
+x: 0
+y: 0
+height: 0
+keepAliveWhenParentDies: false
+isVisible: true
+canBeAttackedAndDamaged: true
+
+[turret_1]
+x: 0
+y: 0
+projectile: 1
+shoot_flame: CUSTOM:woosh
+canAttackCondition: if self.hasFlag(id=10)
+#resourceUsage: unsetFlag=1
+limitingMinRange: 100
+image: ../pointy.png
+invisible: true
+
+[projectile_1]
+#laserEffect: true
+beamImage: transmit.png
+beamImageOffsetRate: 3
+beamImageStart: transmit_start.png
+beamImageStartRotated: true
+beamImageEnd: transmit_end.png
+beamImageEndRotated: true
+moveWithParent: true
+teamColorRatio: 0
+instant: true
+directDamage: 0
+life: 300
+speed: 50
+targetSpeed: 50
+unloadUpToXUnitsFromSource: 100
+deflectionPower: -1
+#targetGround: true
+#targetGroundSpread:25
+#drawUnderUnits:true 
+explodeEffect: CUSTOM:spark*2
+#trailEffect: CUSTOM:wishwush
+#trailEffectRate: 100
+#wobbleAmplitude: 5
+#wobbleFrequency: 10
+
+[movement]
+movementType: AIR
+moveSpeed: 0.5
+moveAccelerationSpeed: 0.5
+moveDecelerationSpeed: 0.5
+maxTurnSpeed: 10
+turnAcceleration: 1
+
+
+
+
+

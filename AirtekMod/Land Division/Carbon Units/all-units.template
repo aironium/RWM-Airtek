@@ -1,0 +1,28 @@
+[core]
+builtFrom_1_name: graphinator
+isUnrepairableUnit: true
+tags: carbon
+showActionsWithMixedSelectionIfOtherUnitsHaveTag:carbon
+ignoreInUnitCapCalculation: true
+
+[action_note]
+isLocked: true
+isActive: false
+text: [ Carbon ]
+description: -Cannot be repaired by usual means.\n-Easier to mass produce\n-Uses a different set of dynamic unit cap system, which doesn't interfere with standard vanilla unit cap system
+displayType: infoOnlyNoBox
+price: 0
+isVisible: true
+
+
+
+[comment_graphinator]
+Graphinator is a factory that uses the Carbon Resource.
+
+[global_resource_carbon]
+displayName: Carbon
+displayColor: #8888cc
+
+[global_resource_carbonUnitLimit]
+displayName: Upkeep
+hidden: true

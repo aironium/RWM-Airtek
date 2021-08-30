@@ -1,0 +1,16 @@
+[global_resource_carbon]
+displayName: Carbon
+displayColor: #ffaaaa
+
+[global_resource_carbonUnitLimit]
+hidden: true
+displayName: Carbon Upkeep
+
+[global_resource_missileSteal]
+hidden: true
+
+[global_resource_satOn]
+hidden: true
+
+[global_resource_sat]
+hidden: true
