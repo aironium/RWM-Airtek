@@ -1,5 +1,5 @@
 [core]
-builtFrom_1_name: graphinator
+builtFrom_1_name: graphinator, graphinatorT2
 isUnrepairableUnit: true
 tags: carbon
 showActionsWithMixedSelectionIfOtherUnitsHaveTag:carbon
