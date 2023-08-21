@@ -7,5 +7,7 @@ tags: starting-units, units, experimentals
 
 thumbnail: thumb.png
 
+minVersion: 1.15p9
+
 [music]
 sourceFolder: AirtekMod/Acoustics

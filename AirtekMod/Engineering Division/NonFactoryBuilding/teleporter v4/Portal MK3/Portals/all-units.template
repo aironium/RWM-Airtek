@@ -25,7 +25,7 @@ energyRegen: -0.025
 dieOnZeroEnergy: true
 canOnlyBeAttackedByUnitsWithTags: antiPortal
 #showInEditor: false
-autoTriggerCooldownTime:0.2s
+
 autoTriggerCheckRate: every8Frames
 
 [action_parent]
@@ -112,7 +112,7 @@ shootDelay: 1
 showRangeUIGuide: true
 
 [effect_woosh]
-life: 10
+life: 75
 priority: low
 fadeOut: true
 alpha:1
@@ -122,22 +122,24 @@ attachedToUnit: true
 
 
 [effect_woosh2]
+drawType: displacement
 life: 75
 priority: low
 fadeOut: true
 alpha:0.75
-scaleFrom: 2.75
-scaleTo: 0
+scaleFrom: 2
+scaleTo: 0.1
 attachedToUnit: true
 
 
 [effect_woosh3]
-life: 75
+drawType: displacement
+life: 20
 priority: low
 fadeOut: true
 alpha:1.5
-scaleFrom: 1
-scaleTo: 5
+scaleFrom: 0.1
+scaleTo: 2
 attachedToUnit: true
 
 [hiddenAction_implode]
