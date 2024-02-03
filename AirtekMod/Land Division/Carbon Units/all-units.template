@@ -21,7 +21,7 @@ Graphinator is a factory that uses the Carbon Resource.
 
 [global_resource_carbon]
 displayName: Carbon
-displayColor: #8888cc
+displayColor: #555555
 
 [global_resource_carbonUnitLimit]
 displayName: Upkeep

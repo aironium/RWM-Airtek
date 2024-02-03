@@ -54,7 +54,7 @@ canAttackLandUnits: false
 
 
 [projectile_1]
-life: 500
+life: 5
 image: null.png
 lightColor: #5555ff
 #targetGround: true
@@ -92,7 +92,7 @@ drawUnderUnits:false
 
 
 [effect_lightningShock]
-life: 60
+life: 65
 
 
 hOffset: 0

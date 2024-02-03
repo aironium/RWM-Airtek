@@ -1,6 +1,6 @@
 [global_resource_carbon]
 displayName: Carbon
-displayColor: #ffaaaa
+displayColor: #555555
 
 [global_resource_carbonUnitLimit]
 hidden: true
